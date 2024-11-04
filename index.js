@@ -29,3 +29,10 @@ function laCajaDePandora(numero){
 
     return resultado; // Retornar el resultado final
 }
+function obtenerInformacion() {
+    return {
+        nombre: "Maximiliano",
+        edad: 19,
+        nacionalidad: "Argentino"
+    };
+}
