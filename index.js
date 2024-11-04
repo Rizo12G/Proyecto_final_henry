@@ -1,4 +1,6 @@
+
 function laCajaDePandora(numero){
+
     let resultado;
 
     // Verificar si el número es par o impar
@@ -35,4 +37,3 @@ function obtenerInformacion() {
         edad: 19,
         nacionalidad: "Argentino"
     };
-}
