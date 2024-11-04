@@ -6,3 +6,11 @@ function laCajaDePandora(numero){
     else
         return 'NO'
     }
+
+    function obtenerInformacion() {
+        return {
+            nombre: "Aleks",
+            edad: 25,
+            nacionalidad: "Mexicana"
+        };
+    }
