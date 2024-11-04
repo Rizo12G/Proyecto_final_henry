@@ -5,3 +5,11 @@ function laCajaDePandora(numero){
     else
         return 0
     }
+
+function obtenerInformacion() {
+    return {
+        nombre: "Caro",
+        edad: 25,
+        nacionalidad: "Colombiana"
+    };
+}
