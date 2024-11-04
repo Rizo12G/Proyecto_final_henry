@@ -1,15 +1,16 @@
+
 function laCajaDePandora(numero){
-    
+
     if (numero%2 == 0)
-        return 1
+        return 'SI'
     else
-        return 0
+        return 'NO'
     }
 
-function obtenerInformacion() {
-    return {
-        nombre: "Caro",
-        edad: 25,
-        nacionalidad: "Colombiana"
-    };
-}
+    function obtenerInformacion() {
+        return {
+            nombre: "Aleks",
+            edad: 25,
+            nacionalidad: "Mexicana"
+        };
+    }
