@@ -3,3 +3,6 @@ yellow_taxis.parquet
 green_taxis.parquet
 venv
 df_time.parquet
+df_ml.parquet
+taxis_limpios.parquet
+var_cuanti.parquet
