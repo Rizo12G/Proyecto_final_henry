@@ -6,3 +6,5 @@ df_time.parquet
 df_ml.parquet
 taxis_limpios.parquet
 var_cuanti.parquet
+taxis_def.parquet
+ETL_taxis copy.ipynb
