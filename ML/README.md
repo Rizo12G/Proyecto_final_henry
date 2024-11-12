@@ -9,9 +9,7 @@ Desarrollar un modelo de predicción del mercado de taxis en la ciudad de Nueva 
 - Emisiones de CO2 por año.
 
 ## Modelo
-<p align="center">
-  <img src="imagenes/modelo_ML.jpg" alt="" width="200px">
-</p>
+![modelo_ML](/imagenes/modelo_ML.jpg)
 
 ## Metodologia
 
