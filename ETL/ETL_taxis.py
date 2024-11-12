@@ -1,20 +1,19 @@
-
 import pandas as pd
-import pyarrow as pa
-import pyarrow.parquet as pq
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-import datetime as dt
+
+print('Se inició el ETL')
 
 # Carga archivo
-taxis = pd.read_parquet('../EDA/taxis.parquet')
+taxis = pd.read_parquet('C:\\Users\\Carolina\\Documents\\Proyecto_final_henry\\ETL\\taxis.parquet')
+print('Se cargó el archivo')
 
 # Borra duplicados
 taxis.drop(taxis[taxis.duplicated()].index, inplace=True)
+print('Se borraron los duplicados')
 
 # Borra columnas sin info
 taxis.drop(columns=['ehail_fee','VendorID'], inplace=True)
+print('Se borraron las columnas innecesarias')
 
 # Llena vacios
 ## Con moda
@@ -24,9 +23,11 @@ l_mod = ['RatecodeID','store_and_fwd_flag','payment_type',
 for i in l_mod:
     mod = taxis[i].mode().iloc[0]
     taxis[i] = taxis[i].fillna(mod)
+print('Se hicieron los reemplazos con la moda')
 
 ## Con media
 taxis['passenger_count'] = taxis['passenger_count'].fillna(taxis['passenger_count'].mean()).astype(int)
+print('Se hicieron los reemplazos con el promedio')
 
 # Tratamiento de  errores
 ## Reemplazo
@@ -36,22 +37,26 @@ taxis['RatecodeID'] = taxis['RatecodeID'].apply(lambda x : mod if x == 99 else x
 taxis['passenger_count'] = taxis['passenger_count'].apply(lambda x : 1 if x == 0 else x)
 
 taxis['payment_type'] = taxis['payment_type'].apply(lambda x : x + 1)
+print('Se hicieron los reeemplazos de valores inusuales')
 
 ## Eliminacion
 taxis.drop(taxis[~((taxis['tpep_dropoff_datetime'].dt.year==2023)|
                    (taxis['tpep_dropoff_datetime'].dt.year==2024)|
                    (taxis['tpep_pickup_datetime'].dt.year==2023)|
                    (taxis['tpep_pickup_datetime'].dt.year==2024))].index, inplace=True)
+print('Se eliminaron las fechas fuera del periodo')
 
 # Intercambio
 taxis['pickup_datetime'] = np.minimum(taxis['tpep_dropoff_datetime'], taxis['tpep_pickup_datetime'])
 taxis['dropoff_datetime'] = np.maximum(taxis['tpep_dropoff_datetime'], taxis['tpep_pickup_datetime'])
 
 taxis.drop(columns=['tpep_pickup_datetime','tpep_dropoff_datetime'], inplace=True)
+print('Se corrigieron las fechas')
 
 # Creacion de variable 'duration'
 taxis['duration'] = taxis['dropoff_datetime'] - taxis['pickup_datetime']
 taxis['duration'] = taxis['duration'].dt.total_seconds() / 60
+print('Se creó la columna "duration"')
 
 # Manejo de neagtivos
 l_abs = ['fare_amount','extra','mta_tax','tip_amount','tolls_amount',
@@ -59,6 +64,7 @@ l_abs = ['fare_amount','extra','mta_tax','tip_amount','tolls_amount',
 
 for i in l_abs:
     taxis[i] = abs(taxis[i])
+print('Se transformaron los negativos')
 
 tot = taxis.shape[0]
 
@@ -81,6 +87,7 @@ l_out1 = ['passenger_count','improvement_surcharge','congestion_surcharge','Airp
 for i in l_out1:
     l = out_def(i)
     taxis.drop(taxis[taxis[i].isin(l)].index, inplace=True)
+print('Se eliminaron los Outliers discretos')
 
 #Valores continuos
 def outliers (col):
@@ -103,5 +110,7 @@ for i in l_out2:
 
   m = outliers(i)
   taxis.drop(taxis[taxis[i]>m].index, inplace=True)
+print('Se eliminaron los Outliers continuos')
 
-taxis.to_parquet('../clean_data/taxis_def.parquet')
+taxis.to_parquet('C:\\Users\\Carolina\\Documents\\Proyecto_final_henry\\clean_data\\taxis_def.parquet')
+print('Se exportó el archivo')
