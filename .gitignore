@@ -8,3 +8,4 @@ taxis_limpios.parquet
 var_cuanti.parquet
 taxis_def.parquet
 ETL_taxis copy.ipynb
+df_grouped.parquet
