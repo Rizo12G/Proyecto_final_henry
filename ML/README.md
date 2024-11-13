@@ -39,12 +39,12 @@ Se empleará para este analisis el software Visual Studio Code en lenguaje Pytho
 ## Análisis preliminar
 
 ### Estacionalidad
-![dist_dia_sem](imagenes/dist_dia_sem.png)
+![dist_dia_sem](/imagenes/dist_dia_sem.jpg)
 
-![dist_dia_mes](imagenes/dist_dia_mes.png)
+![dist_dia_mes](/imagenes/dist_dia_mes.jpg)
 
-![dist_sem_mes](imagenes/dist_sem_mes.png)
+![dist_sem_mes](/imagenes/dist_sem_mes.jpg)
 
 ### Tendencia
 
-![trend](imagenes/trend.png)
+![trend](/imagenes/trend.jpg)
