@@ -9,3 +9,6 @@ var_cuanti.parquet
 taxis_def.parquet
 ETL_taxis copy.ipynb
 df_grouped.parquet
+diario.csv
+mensual.csv
+semanal.csv
