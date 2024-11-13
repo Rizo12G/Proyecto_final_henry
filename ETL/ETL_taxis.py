@@ -5,11 +5,11 @@ print('Se inició el ETL')
 
 # Carga archivo
 taxis = pd.read_parquet('C:\\Users\\Carolina\\Documents\\Proyecto_final_henry\\ETL\\taxis.parquet')
-print('Se cargó el archivo')
+print('Se cargó el archivo. Cantidad actual:', taxis.shape[0])
 
 # Borra duplicados
 taxis.drop(taxis[taxis.duplicated()].index, inplace=True)
-print('Se borraron los duplicados')
+print('Se borraron los duplicados. Cantidad actual:', taxis.shape[0])
 
 # Borra columnas sin info
 taxis.drop(columns=['ehail_fee','VendorID'], inplace=True)
@@ -44,7 +44,7 @@ taxis.drop(taxis[~((taxis['tpep_dropoff_datetime'].dt.year==2023)|
                    (taxis['tpep_dropoff_datetime'].dt.year==2024)|
                    (taxis['tpep_pickup_datetime'].dt.year==2023)|
                    (taxis['tpep_pickup_datetime'].dt.year==2024))].index, inplace=True)
-print('Se eliminaron las fechas fuera del periodo')
+print('Se eliminaron las fechas fuera del periodo', taxis.shape[0])
 
 # Intercambio
 taxis['pickup_datetime'] = np.minimum(taxis['tpep_dropoff_datetime'], taxis['tpep_pickup_datetime'])
@@ -64,9 +64,11 @@ l_abs = ['fare_amount','extra','mta_tax','tip_amount','tolls_amount',
 
 for i in l_abs:
     taxis[i] = abs(taxis[i])
+
 print('Se transformaron los negativos')
 
 tot = taxis.shape[0]
+print('Cantidad antes de outliers:', taxis.shape[0])
 
 # Manejo de Outliers
 # Valores discretos
@@ -77,17 +79,21 @@ def out_def (col):
             col (str): Nombre de la columna
         Retorno: Lista con los valores correspondientes (list)
     '''
+    n = 0
     l = []
     for index, row in taxis[col].value_counts().to_frame().iterrows():
         if row['count'] < tot*0.01:
             l.append(index)
+            n += row['count']
+    print(f'| {col} | {l} | {n} | {round((n/tot)*100,2)} % |')
     return l
 
 l_out1 = ['passenger_count','improvement_surcharge','congestion_surcharge','Airport_fee']
 for i in l_out1:
     l = out_def(i)
     taxis.drop(taxis[taxis[i].isin(l)].index, inplace=True)
-print('Se eliminaron los Outliers discretos')
+
+print('Se eliminaron los Outliers discretos. Cantidad actual:', taxis.shape[0])
 
 #Valores continuos
 def outliers (col):
@@ -102,7 +108,10 @@ def outliers (col):
     RIC = Q3 - Q1
 
     Max = Q3 + 1.5*RIC
-
+    out = taxis[taxis[col]>Max]
+    c = out.shape[0] 
+    p = (c/tot)*100
+    print(f'| {col} | Max: {round(Max,2)} | n: {round(c,2)} | {round(p,2)} % |')
     return Max
 
 l_out2 = ['fare_amount', 'extra', 'mta_tax', 'tip_amount', 'tolls_amount', 'total_amount', 'trip_distance','duration']
@@ -110,7 +119,8 @@ for i in l_out2:
 
   m = outliers(i)
   taxis.drop(taxis[taxis[i]>m].index, inplace=True)
-print('Se eliminaron los Outliers continuos')
+
+print('Se eliminaron los Outliers continuos. Cantidad actual:', taxis.shape[0])
 
 taxis.to_parquet('C:\\Users\\Carolina\\Documents\\Proyecto_final_henry\\clean_data\\taxis_def.parquet')
 print('Se exportó el archivo')
