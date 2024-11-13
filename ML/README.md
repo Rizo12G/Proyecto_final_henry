@@ -38,8 +38,13 @@ Se empleará para este analisis el software Visual Studio Code en lenguaje Pytho
 
 ## Análisis preliminar
 
-### Mensual
+### Estacionalidad
+![dist_dia_sem](imagenes/dist_dia_sem.png)
 
-### Semanal
+![dist_dia_mes](imagenes/dist_dia_mes.png)
 
-### Diario
+![dist_sem_mes](imagenes/dist_sem_mes.png)
+
+### Tendencia
+
+![trend](imagenes/trend.png)
