@@ -30,9 +30,9 @@ Se desarrollará a partir del dataset de *taxis* un **modelo de Machine Learning
 - Prophet
   
 Para comparar los modelos se emplearan las siguientes metricas:
-- *Coverage (Cobertura de los Intervalos de Incertidumbre ):* Es clave porque ayuda a evaluar cuán confiable es la predicción y si el sistema estará preparado para escenarios extremos (alta demanda o baja demanda). <br>
-- *MAE (Mean Absolute Error):* Es util para tener una medida clara del error promedio en el número de viajes que estás prediciendo. Es decir, cual es la cantidad de viajes se esta desviando de la prediccion y si la operacion estaria en la capacidad de cubrirlos.
-- *RMSE (Root Mean Squared Error):* Permite tener en cuenta los picos de demanda o eventos especiales (como días festivos o eventos deportivos) que generan una alta variabilidad en el número de viajes.
+- **Coverage (Cobertura de los Intervalos de Incertidumbre ):** Es clave porque ayuda a evaluar cuán confiable es la predicción y si el sistema estará preparado para escenarios extremos (alta demanda o baja demanda). <br>
+- **MAE (Mean Absolute Error):** Es util para tener una medida clara del error promedio en el número de viajes que estás prediciendo. Es decir, cual es la cantidad de viajes se esta desviando de la prediccion y si la operacion estaria en la capacidad de cubrirlos.
+- **RMSE (Root Mean Squared Error):** Permite tener en cuenta los picos de demanda o eventos especiales (como días festivos o eventos deportivos) que generan una alta variabilidad en el número de viajes.
 
 Los valores y calculos obtenidos a partir de este modelo seran desplegados en un portal web elaborado usando la libreria *Streamlit*.
 
