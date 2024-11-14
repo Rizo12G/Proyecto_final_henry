@@ -9,6 +9,6 @@ var_cuanti.parquet
 taxis_def.parquet
 ETL_taxis copy.ipynb
 df_grouped.parquet
-diario.csv
-mensual.csv
-semanal.csv
+Calibracion_Modelo.ipynb
+diario_inter.csv
+semanal_inter.csv
