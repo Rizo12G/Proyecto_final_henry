@@ -5,7 +5,11 @@
 ![Portada ML](/imagenes/PortadaML.jpg)
 
 
-En esta carpeta se encuentra la informacion, [datos](ML/raw) y analisis preliminar correpondientes al modelo de Machine Learning que se desarrollará. Contiene tambien una aproximacion inicial a la seleccion del modelo.
+En esta carpeta se encuentra la informacion, datos y analisis correpondientes al modelo de Machine Learning:
+
+- [**Carpeta raw:**](/raw) Archivos csv para cada frecuencia escogida (diario, semanal y mensual) generado usando la funcion *resample*
+- [**Analisis_preliminar_ML:**](Analisis_preliminar_ML.ipynb) Notebook con el analisis preliminar de las series de tiempo
+- [**Eleccion_modelos_ML:**](Eleccion_modelos_ML.ipynb) Notebook con las primeras aproximaciones al modelo de prediccion
 
 ## Objetivo
 Desarrollar un modelo de predicción del mercado de taxis en la ciudad de Nueva York a *un año* (septiembre 2024 - agosto 2025) del cual se obtendrá el *número de viajes* y su comportamiento. Esto ayudará a dimensionar la flota de transporte, el personal o los recursos necesarios para asegurar una mejor planeación y ditribución. A partir de esta información se podria calcular los siguientes KPI's:<br>
