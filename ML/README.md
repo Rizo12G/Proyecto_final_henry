@@ -85,7 +85,9 @@ Se puede observar que en terminos generales para todas las frecuencias se presen
 
 - **Frecuencia diaria:** Se observan varios picos fuera de la tendencia que pueden ser considerados anomalías, posiblemente debido a eventos especiales o climaticos
 - **Frecuencia semanal:** Hay algunas caídas bruscas y picos en la serie de tiempo semanal, que podrían reflejar semanas con cambios drásticos en la movilidad que podrian estar relacionados con festividades.
-- **Frecuencia mensual:** La variabilidad a nivel mensual es menor comparada con las otras frecuencias, lo que indica una mayor estabilidad en el promedio mensual.
+- **Frecuencia mensual:** La variabilidad a nivel mensual es menor comparada con las otras frecuencias, lo que indica una mayor estabilidad en el promedio mensual.<br>
+
+Con el fin de tener un modelo mas estable se realizo una interpolacion para algunos valores de las series diaria y semanal.
 
 ### Estacionariedad
 
