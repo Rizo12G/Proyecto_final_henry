@@ -9,7 +9,7 @@ import pandas as pd
 # Define una función para mostrar información de contacto
 def mostrar_contacto():
     st.write("📧 **Correo electrónico:** contacto@datavision.com")
-    st.write("📞 **Teléfono:** +1 553 456 7050")
+    st.write("📞 **Teléfono:** +57 (1) 443 4570")
     st.write("🏢 **Dirección:** Carrera 7 # 105 - 13, Bogota D.C., Colombia")
 
 
