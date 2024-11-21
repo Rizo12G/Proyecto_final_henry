@@ -26,8 +26,8 @@ def cargar_datos(ruta_csv):
     df['Fecha'] = df['Fecha'].dt.date
     return df
 
-histo = cargar_datos('../App/hist_mensual.csv')
-prom = pd.read_csv('../App/prom_mes.csv')
+histo = cargar_datos('App/hist_mensual.csv')
+prom = pd.read_csv('App/prom_mes.csv')
 
 st.header('Datos Históricos (2022 - 2024)')
 st.write(histo)
@@ -61,7 +61,7 @@ st.markdown(
 
 n_months = st.slider('Meses:', 0, 18)
 
-with open('../App/json_model/serialized_model.json', 'r') as fin:
+with open('App/json_model/serialized_model.json', 'r') as fin:
     modelo_prophet = model_from_json(fin.read())
 
 # Mostrar predicciones
@@ -126,7 +126,7 @@ total_viajes = pred['Numero total de viajes'][30:].sum()
 
 st.metric(f"Numero total de viajes en {n_months} meses:", f"{total_viajes:,}")
 
-pred.to_csv('../App/pred.csv')
+pred.to_csv('App/pred.csv')
 
 st.markdown('***')
 # Calcular valores de predicción total (en USD) y total de viajes (número de viajes) 
