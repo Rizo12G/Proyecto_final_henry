@@ -51,7 +51,7 @@ st.markdown(
 )
 col1, col2, col3 = st.columns(3)
 
-histo = pd.read_csv('../App/hist_mensual.csv')
+histo = pd.read_csv('App/hist_mensual.csv')
 
 with col1:
     st.markdown('##### ')
@@ -71,7 +71,7 @@ col1, col2 = st.columns(2, gap='large', vertical_alignment='center')
 
 with col2:
     
-    st.image('images/logo.jpg', width= 350)
+    st.image('App/images/logo.jpg', width= 350)
     
 
 with col1:
