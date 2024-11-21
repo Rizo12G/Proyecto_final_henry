@@ -11,6 +11,20 @@ En esta carpeta se encuentra la informacion, datos y analisis correpondientes al
 - [**Analisis_preliminar_ML:**](Analisis_preliminar_ML.ipynb) Notebook con el analisis preliminar de las series de tiempo
 - [**Eleccion_modelos_ML:**](Eleccion_modelos_ML.ipynb) Notebook con las primeras aproximaciones al modelo de prediccion
 
+## Tabla de Contenido
+1. Objetivo
+2. Modelo
+3. Metodologia
+4. Tecnologias
+5. Analisis Preliminar
+   - Distribucion
+   - Tendencia
+   - Anomalias
+   - Estacionariedad
+6. Eleccion del modelo
+7. Resultado del modelo
+8. Despliegue del modelo (Aplicacion Web)
+
 ## Objetivo
 Desarrollar un modelo de predicción del mercado de taxis en la ciudad de Nueva York a *un año* (septiembre 2024 - agosto 2025) del cual se obtendrá el *número de viajes* y su comportamiento. Esto ayudará a dimensionar la flota de transporte, el personal o los recursos necesarios para asegurar una mejor planeación y ditribución. A partir de esta información se podria calcular los siguientes KPI's:<br>
  
@@ -52,9 +66,11 @@ Se empleará para este analisis el software Visual Studio Code en lenguaje Pytho
 - Numpy
 - Matplotlib
 - Seaborn
+- Pyplot
 - Scikit Learn
 - StatsModels
 - Prophet
+- Streamlit
 
 ## Análisis preliminar
 
@@ -105,3 +121,14 @@ De acuerdo con esto, fue necesario realizar un proceso de diferenciacion de la s
 
 ![men_diff](/imagenes/men_diff.jpg)
 
+## Eleccion del modelo
+
+## Resultado del modelo
+
+## Despliegue del modelo (Aplicacion Web)
+
+Puedes encontrar esta herramienta [aqui](https://nyc-taxis-predict.streamlit.app/)
+
+<p align="center">
+  <img src="/App/images/portada.jpg" alt="Descripción de la imagen" width="500">
+</p>
