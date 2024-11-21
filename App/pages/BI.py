@@ -22,7 +22,7 @@ pred_past = pd.read_csv('App/pred.csv')
 n_months = pred_past.shape[0]
 
 if n_months == 30:
-     st.warning('No has seleccionado un numero de meses para predecir')
+     st.warning('No has seleccionado un numero de meses para predecir. Debes hacerlo en Forecasting :material/timeline:')
 else:
     st.markdown("""
     En esta seccion podras realizar un analisis de negocio con base en el comportamiento del mercado de la ciudad a partir de:
