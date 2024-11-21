@@ -16,7 +16,8 @@
 7. [KPIs](#kpis) <br>
 8. [Tecnologías](#tecnologías) <br>
 9. [Metodología de trabajo](#metodología-de-trabajo) <br>
-10. [Colaboradores](#colaboradores) <br>
+10. [Producto Final](#producto-final)
+11. [Colaboradores](#colaboradores) <br>
 
 ## ¿Quiénes Somos?
 
@@ -98,6 +99,16 @@ Para la gestión del proyecto, Scrum es un marco ágil que permite a equipos div
 
 <p align="center">
   <img src="imagenes/Scrum.jpg" alt="" width="600px">
+</p>
+
+## Producto Final
+
+### Aplicacion Web (Modelo Machine Learning)
+
+Se realizó un modelo de prediccion de los viajes en la ciudad de Nueva York a partir de un modelo de Machine Learning desarrollado en Prophet. A partir de este se creo una herramienta de prediccion de costos e impacto ambiental que puedes encontrar [aqui](https://nyc-taxis-predict.streamlit.app/)
+
+<p align="center">
+  <img src="/App/images/portada.jpg" alt="Portada aplicacion web" width="500">
 </p>
 
 ## Colaboradores
