@@ -13,7 +13,7 @@ def mostrar_contacto():
     st.write("🏢 **Dirección:** Carrera 7 # 105 - 13, Bogota D.C., Colombia")
 
 
-st.image("./images/portada.jpg", width=1200)
+st.image("https://github.com/Rizo12G/Proyecto_final_henry/blob/main/App/images/portada.jpg", width=1200)
 
 
 st.title("🚕 ¡Bienvenido!")
