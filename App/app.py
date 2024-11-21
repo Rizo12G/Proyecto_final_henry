@@ -22,5 +22,5 @@ pagina3 = st.Page(
 pg = st.navigation(pages=[pagina1, pagina2, pagina3])
 pg.run()
 
-st.logo('images/logo.jpg')
+#st.logo('images/logo.jpg')
 st.sidebar.text('Data Vision. 2024')
