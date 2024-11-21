@@ -18,7 +18,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-pred_past = pd.read_csv('../App/pred.csv')
+pred_past = pd.read_csv('App/pred.csv')
 n_months = pred_past.shape[0]
 
 if n_months == 30:
@@ -42,7 +42,7 @@ else:
 
     st.header(f'Estimaciones para {n_months} meses de operacion')
 
-    st.subheader('Demanda futura en NYC')
+    st.subheader('Demanda futura en NYC 🗽')
 
     col, col3 = st.columns(2, gap='large', vertical_alignment='center')
 
@@ -141,10 +141,10 @@ else:
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.image('./images/Usado.jpg', width= 350)
+        st.image('App/images/Usado.jpg', width= 350)
 
     with col2:
-        st.image('./images/Nuevo.jpg', width= 350)
+        st.image('App/images/Nuevo.jpg', width= 350)
 
     with col3:
         opcion = ['Usado', 'Nuevo']
@@ -155,7 +155,7 @@ else:
 
     st.subheader('Selecciona el modelo del vehiculo electrico que quisieras adquirir 🚙')
 
-    evs = pd.read_csv('../App/EVs models.csv', index_col='ID')
+    evs = pd.read_csv('App/EVs models.csv', index_col='ID')
 
     eleccion1 = None
 
@@ -163,27 +163,27 @@ else:
     col4, col5, col6 = st.columns(3)
 
     with col1:
-        st.image('./images/Veh1.jpg')
+        st.image('App/images/Veh1.jpg')
         if st.button("Elegir", key="grupo1_Opcion 1"):
             eleccion1 = 1
     with col2:
-        st.image('./images/Veh2.jpg')
+        st.image('App/images/Veh2.jpg')
         if st.button("Elegir", key="grupo1_Opcion 2"):
             eleccion1 = 2
     with col3:
-        st.image('./images/Veh3.jpg')
+        st.image('App/images/Veh3.jpg')
         if st.button("Elegir", key="grupo1_Opcion 3"):
             eleccion1 = 3
     with col4:
-        st.image('./images/Veh4.jpg')
+        st.image('App/images/Veh4.jpg')
         if st.button("Elegir", key="grupo1_Opcion 4"):
             eleccion1 = 4
     with col5:
-        st.image('./images/Veh5.jpg')
+        st.image('App/images/Veh5.jpg')
         if st.button("Elegir", key="grupo1_Opcion 5"):
             eleccion1 = 5
     with col6:
-        st.image('./images/Veh6.jpg')
+        st.image('App/images/Veh6.jpg')
         if st.button("Elegir", key="grupo1_Opcion 6"):
             eleccion1 = 6
 
