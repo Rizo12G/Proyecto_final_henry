@@ -10,14 +10,14 @@ pagina1 = st.Page(
     default= True,)
 
 pagina2 = st.Page(
-    page = 'pages/BI.py',
-    title = 'Business Intelligence',
-    icon = ':material/finance:')
-
-pagina3 = st.Page(
     page = 'pages/ML.py',
     title = 'Forecasting',
     icon = ':material/timeline:')
+
+pagina3 = st.Page(
+    page = 'pages/BI.py',
+    title = 'Business Intelligence',
+    icon = ':material/finance:')
 
 pg = st.navigation(pages=[pagina1, pagina2, pagina3])
 pg.run()
