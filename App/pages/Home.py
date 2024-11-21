@@ -31,8 +31,17 @@ st.markdown(
     """, 
     unsafe_allow_html=True
 )
-if st.button("Ir al modelo 📂"):
-    webbrowser.open("https://github.com/Rizo12G/Proyecto_final_henry/tree/main/ML")
+
+st.markdown(
+    """
+    <a href="https://github.com/Rizo12G/Proyecto_final_henry/tree/main/ML" target="_blank">
+        <button style="padding:10px 20px; font-size:16px; border-radius:5px; background-color:#4CAF50; color:white; border:none; cursor:pointer;">
+            Ir al modelo 📂
+        </button>
+    </a>
+    """,
+    unsafe_allow_html=True
+)
 
 st.markdown('***')
 
