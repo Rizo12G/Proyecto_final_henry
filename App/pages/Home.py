@@ -35,7 +35,7 @@ st.markdown(
 st.markdown(
     """
     <a href="https://github.com/Rizo12G/Proyecto_final_henry/tree/main/ML" target="_blank">
-        <button style="padding:10px 20px; font-size:16px; border-radius:5px; background-color:#4CAF50; color:white; border:none; cursor:pointer;">
+        <button style="padding:10px 20px; font-size:16px; border-radius:5px; background-color:#367884; color:white; border:none; cursor:pointer;">
             Ir al modelo 📂
         </button>
     </a>
