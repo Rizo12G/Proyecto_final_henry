@@ -22,9 +22,12 @@ En esta carpeta se encuentra la informacion, datos y analisis correpondientes al
    - [Tendencia](#tendencia)
    - [Anomalias](#anomalias)
    - [Estacionariedad](#estacionariedad)
-6. [Seleccion del modelo](#seleccion-del-modelo)
+6. [Seleccion del modelo](#seleccion-del-modelo
+   - [Eleccion de la frecuencia temporal]
+   - [Eleccion de tecnica/enfoque]
 7. [Resultado final](#resultado-final)
-8. [Despliegue (Aplicacion Web)](#despliegue-aplicacion-web)
+8. [Conclusiones Finales](#conclusiones-finales)
+9. [Despliegue (Aplicacion Web)](#despliegue-aplicacion-web)
 
 ## Objetivo
 Desarrollar un modelo de predicción del mercado de taxis en la ciudad de Nueva York a *un año* (septiembre 2024 - agosto 2025) del cual se obtendrá el *número de viajes* y su comportamiento. Esto ayudará a dimensionar la flota de transporte, el personal o los recursos necesarios para asegurar una mejor planeación y ditribución. A partir de esta información se podria calcular los siguientes KPI's:<br>
@@ -172,7 +175,7 @@ Para complementar los resultados arrojados por las metricas de evaluacion a cont
 4. **Datos reales y pronostico**
     ![Pronostico](/imagenes/historico%20y%20pronostico.png)
 
-## Conclusion de resultados
+## Conclusiones Finales
 
 El modelo generado con Prophet permitió realizar proyecciones robustas y detallada presentando un **MAPE** inferior al 10% y una **Cobertura** superior al 90% demostrando su capacidad para captar patrones estacionales y tendencias clave en el mercado de taxis. Con estos resultados se considera que las predicciones cubres en gran medida las variaciones de demanda y la flota estimada a partir de estas puede estar en capacidad de cubrirla. Este enfoque proporciona una base sólida para futuras decisiones basadas en datos y análisis financiero. El metodologia empleada en el modelo definitivo fue la siguiente.
 
