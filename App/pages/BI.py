@@ -188,15 +188,15 @@ else:
     with col3:
         st.image('App/images/Veh3.jpg')
         if st.button("Elegir", key="grupo1_Opcion 3"):
-            eleccion1 = 3
+            eleccion1 = 5
     with col4:
         st.image('App/images/Veh4.jpg')
         if st.button("Elegir", key="grupo1_Opcion 4"):
-            eleccion1 = 4
+            eleccion1 = 3
     with col5:
         st.image('App/images/Veh5.jpg')
         if st.button("Elegir", key="grupo1_Opcion 5"):
-            eleccion1 = 5
+            eleccion1 = 4
     with col6:
         st.image('App/images/Veh6.jpg')
         if st.button("Elegir", key="grupo1_Opcion 6"):
