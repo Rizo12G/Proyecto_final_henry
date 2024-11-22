@@ -73,7 +73,6 @@ else:
 
     with col5:
         vehiculos_necesarios = veh_dia*per_d
-
         st.metric(f"Necesitarias este numero de vehiculos:", f"{int(vehiculos_necesarios):,}")
 
     st.subheader('Selecciona el porcentaje de vehiculos electricos 🍃')
@@ -122,6 +121,7 @@ else:
         xaxis_rangeslider_visible=True
     )
 
+    reduccion =  1 - (impacto['Emisiones CO2 (ton)'][30:].sum() / pred_past['Emisiones CO2 (ton)'][30:].sum())
     col1, col2 = st.columns([1, 2.5], vertical_alignment='center')
 
     # Mostrar la gráfica en Streamlit
@@ -133,6 +133,7 @@ else:
         st.markdown('#### Impacto ambiental 🌎')
         st.metric("Emisiones de CO2 en un dia (ton)", f"{co2_dia:,.2f}")
         st.metric(f"Total emisiones de CO2 en {n_months} meses (ton)", f"{co2:,.2f}")
+        st.metric("Reduccion de emisiones:, f"{reduccion*100:,.2f}%")
 
     st.markdown("***")
 
