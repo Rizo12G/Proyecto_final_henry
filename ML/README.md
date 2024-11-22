@@ -22,9 +22,9 @@ En esta carpeta se encuentra la informacion, datos y analisis correpondientes al
    - [Tendencia](#tendencia)
    - [Anomalias](#anomalias)
    - [Estacionariedad](#estacionariedad)
-6. [Seleccion del modelo](#seleccion-del-modelo
-   - [Eleccion de la frecuencia temporal]
-   - [Eleccion de tecnica/enfoque]
+6. [Seleccion del modelo](#seleccion-del-modelo)
+   - [Eleccion de la frecuencia temporal](#eleccion-de-la-frecuencia-temporal)
+   - [Eleccion de tecnica/enfoque](#eleccion-de-tecnicaenfoque)
 7. [Resultado final](#resultado-final)
 8. [Conclusiones Finales](#conclusiones-finales)
 9. [Despliegue (Aplicacion Web)](#despliegue-aplicacion-web)
