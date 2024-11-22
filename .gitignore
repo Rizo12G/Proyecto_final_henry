@@ -12,4 +12,7 @@ df_grouped.parquet
 Calibracion_Modelo.ipynb
 diario_inter.csv
 semanal_inter.csv
-ML
+forecast_mensual.csv
+Mensual.ipynb
+pred_mensual.csv
+Predicciones_ML.ipynb
