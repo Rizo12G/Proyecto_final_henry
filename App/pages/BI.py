@@ -285,15 +285,13 @@ else:
 
         with col5:
             import math
-            tiempo = math.ceil(cost_veh/utilidad_mes)
+            if vehiculos_necesarios > 0:
+                tiempo = math.ceil(cost_veh/utilidad_mes)
+            else:
+                tiempo = 0
             st.subheader("Periodo de Recuperacion 📆")
             st.metric("Costos asociados: Combustible, Mantenimiento, Seguro y Salarios",f"{tiempo} meses")
 
-
-        with col4:
-            st.empty()
-
-        
     else:
         st.warning('Debes seleccionar un vehiculo electrico')
 
