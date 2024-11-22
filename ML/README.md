@@ -193,6 +193,7 @@ Gracias a estas herramientas, es posible explorar y analizar en profundidad el m
 - Emisiones de CO2
 - Ingreso diario y del periodo de analisis
 
+Esta herramienta cuenta que el modelo de prediccion integrado lo que permite la actualizacion de datos historicos para generar nuevas predicciones en diferentes ventanas temporales.
 Puedes encontrar esta herramienta [aqui](https://nyc-taxis-predict.streamlit.app/) y todo el detalle de su implementacion en la carpeta **[App](../App)**.
 
 <p align="center">
