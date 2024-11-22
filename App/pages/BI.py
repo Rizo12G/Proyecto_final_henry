@@ -263,7 +263,7 @@ else:
 
         st.markdown('***')
 
-        col3, col4, col5 = st.columns(3, gap='large', vertical_alignment='top')
+        col3, col4, col5 = st.columns([1,1,1.5], vertical_alignment='top')
 
         with col3:
             st.subheader("Ingresos 💰")
