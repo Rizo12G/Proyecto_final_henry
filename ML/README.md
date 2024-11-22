@@ -8,7 +8,7 @@
 En esta carpeta se encuentra la informacion, datos y analisis correpondientes al modelo de Machine Learning:
 
 - **[Carpeta raw:](raw)** Archivos csv para cada frecuencia escogida (diario, semanal y mensual) generado usando la funcion *resample*. Incluye los 2.5 alos que se adicionaron al modelo.
-- **[Analisis_preliminar_ML_extendido:](Analisis_preliminar_ML _extendido.ipynb)** Notebook con el analisis preliminar de las series de tiempo que incluye el periodo adicional.
+- **[Analisis_preliminar_ML_extendido:](Analisis_preliminar_ML_extendido.ipynb)** Notebook con el analisis preliminar de las series de tiempo que incluye el periodo adicional.
 - **[Modelos_ARIMA_SARIMA:](Modelos_ARIMA_SARIMA.ipynb)** Notebook con las primeras aproximaciones al modelo de prediccion (ARIMA y SARIMA).
 - **[Modelo_Prophet:](Modelo_Prophet.ipynb)** Notebook con el modelo de prediccion definitivo implementado en Prophet.
 
