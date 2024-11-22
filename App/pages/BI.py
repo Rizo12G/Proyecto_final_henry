@@ -257,21 +257,37 @@ else:
             st.metric("Costo anual flota electrica", f"${mant_ele*veh_ele:,.2f}")
 
         with col5: 
+            mant_total=(mant_ele*veh_ele)+(mant_conv*veh_cov)
             st.markdown("##### Flota total")
-            st.metric(f"Costo anual mantenimiento flota", f"${(mant_ele*veh_ele)+(mant_conv*veh_cov):,.2f}")      
+            st.metric(f"Costo anual mantenimiento flota", f"${mant_total:,.2f}")      
 
         st.markdown('***')
 
-        col3, col4 = st.columns(2, gap='large', vertical_alignment='top')
+        col3, col4, col5 = st.columns(3, gap='large', vertical_alignment='top')
 
         with col3:
-            st.subheader("Ganancia 💰")
+            st.subheader("Ingresos 💰")
             ingresos_diarios = (total_usd / dias_pred) * per_d
-            costos_diarios = cost_gas + cost_kw
-            utilidad_diaria = ingresos_diarios - costos_diarios
-            utilidad_total = utilidad_diaria * dias_pred
-            st.metric(f"Ganancia estimada en un dia (USD)", f"${utilidad_diaria if utilidad_diaria > 0 else 0:,.2f}")
-            st.metric(f"Ganancia total estimada en {n_months} meses (USD)", f"${utilidad_total if utilidad_total > 0 else 0:,.2f}")
+            st.metric(f"Ingreso en un dia (USD)", f"${ingresos_diarios if ingresos_diarios > 0 else 0:,.2f}")
+            st.metric(f"Ingreso total en {n_months} meses (USD)", f"${(total_usd*per_d) if (total_usd*per_d) > 0 else 0:,.2f}")
+
+        with col4:
+            st.subheader("Utilidad 🤑")
+            seguro=833*vehiculos_necesarios
+            admin=4500*(vehiculos_necesarios/75)
+            mant=mant_total/12
+            comb=(cost_kw+cost_gas)*30
+
+            utilidad_mes = (ingresos_diarios*30)-seguro-admin-mant-comb
+
+            st.metric(f"Utilidad estimada en un dia (USD)", f"${(utilidad_mes)/30 if vehiculos_necesarios > 0 else 0:,.2f}")
+            st.metric(f"Utilidad total estimada en {n_months} meses (USD)", f"${(utilidad_mes*n_months) if vehiculos_necesarios > 0 else 0:,.2f}")
+
+        with col5:
+            import math
+            tiempo = math.ceil(cost_veh/utilidad_mes)
+            st.subheader("Periodo de Recuperacion 📆")
+            st.metric("Costos asociados: Combustible, Mantenimiento, Seguro y Salarios",f"{tiempo} meses")
 
 
         with col4:
