@@ -10,6 +10,7 @@ En esta carpeta se encuentra la informacion, datos y analisis correpondientes al
 - [**Carpeta raw:**](/raw) Archivos csv para cada frecuencia escogida (diario, semanal y mensual) generado usando la funcion *resample*
 - [**Analisis_preliminar_ML:**](Analisis_preliminar_ML.ipynb) Notebook con el analisis preliminar de las series de tiempo
 - [**Eleccion_modelos_ML:**](Eleccion_modelos_ML.ipynb) Notebook con las primeras aproximaciones al modelo de prediccion
+- [**Modelo_Prophet:**](Modelo_Prophet.ipynb) Notebook con el modelo de prediccion definitivo
 
 ## Tabla de Contenido
 1. [Objetivo](#objetivo)
@@ -28,8 +29,8 @@ En esta carpeta se encuentra la informacion, datos y analisis correpondientes al
 ## Objetivo
 Desarrollar un modelo de predicción del mercado de taxis en la ciudad de Nueva York a *un año* (septiembre 2024 - agosto 2025) del cual se obtendrá el *número de viajes* y su comportamiento. Esto ayudará a dimensionar la flota de transporte, el personal o los recursos necesarios para asegurar una mejor planeación y ditribución. A partir de esta información se podria calcular los siguientes KPI's:<br>
  
-  - Utilidad mensual según la flota de vehículos adquirida.
-  - Emisiones de CO2 por año. <br>
+  - Utilidad según la flota de vehículos adquirida.
+  - Emisiones de CO2. <br>
   
 Para estos calculos se emplearia la siguiente informacion adicional como promedio extraida de la bases de datos o investigaciones adicionales:<br>
 
@@ -45,9 +46,11 @@ Para estos calculos se emplearia la siguiente informacion adicional como promedi
 
 ## Metodologia
 Se desarrollará a partir del dataset de *taxis* un **modelo de Machine Learning de aprendizaje no supervisado** a traves de un análisis de *Series de Tiempo* debido a que los datos estan intrinsecamente ordenados cronologicamente. Se utilizara esta tecnica ya que es crucial identificar patrones y tendencias, para anticipar el comportamiento futuro. Para comenzar, se realizara un analisis preliminar del comportamiento del numero de viajes para diferentes frecuencias de muestreo que se obtendran haciendo uso de la funcion *resample*. <br> Se evaluaran diferentes modelos de prediccion:<br>
+
 - ARIMA (AutoRegressive Integrated Moving Average)
 - SARIMA (Seasonal AutoRegressive Integrated Moving Average)
 - Prophet
+- Redes Neuronales
   
 Para comparar los modelos se emplearan las siguientes metricas:
 - **Coverage (Cobertura de los Intervalos de Incertidumbre ):** Es clave porque ayuda a evaluar cuán confiable es la predicción y si el sistema estará preparado para escenarios extremos (alta demanda o baja demanda). <br>
@@ -121,34 +124,38 @@ De acuerdo con esto, fue necesario realizar un proceso de diferenciacion de la s
 
 ## Seleccion del modelo
 
-Para realizar la eleccion del modelo 
+Para el desarrollo de este modelo el enfoque principal fue lograr predicciones precisas y confiables que permitan la toma de decisiones estratégicas en el mercado de taxis. De acuerdo con esto, se tuvo en cuenta 2 criterios principales: la frecuencia temporal y la tecnicas de modelado. Se realizó una primera ronda de modelos sin embargo no se obtuvo resultados suficientemente buenos para considerar que se habia llegado a un modelo optimo. Debido a esto, se tomo la decision de adicionar a los datos historicos 2.5 años mas, es decir, se realizo el analisis desde marzo de 2022 a agosto 2024.
 
 ### Eleccion de la frecuencia temporal
 
+En el momento de seleccionar la serie de tiempo se tuvo en cuenta que el objetivo era realizar un modelo que pudiera realizar predicciones a largo plazo. De acuerdo con esto, se observo que las series *diarias* y *semanales* eran demasiado sensibles a las variaciones en los datos por lo que no presentaban una tendencia lo suficientemente estable para representar los datos historicos y los futuros. Por el lado de la serie **mensual** se obtuvo una tendencia suave con estacionalidad anual lo cual se considero ideal para las necesidades del modelo.
+
+### Eleccion de tecnica/enfoque
+
+Una vez se selecciono la frecuencia a emplear se paso a revisar las diferentes tecnicas disponibles. Teniendo en cuenta los enfoques mecionados anteriormente se decidió comenzar desde el mas simple (ARIMA) al mas complejo (Redes Neuronales) con el fin de lograr un buen modelo de prediccion con la menor cantidad de recursos computacionales. Para los modelos de **ARIMA** y **SARIMA** se empleo la *serie diferenciada* de la frecuencia mensual y su posterior conversion a datos reales. A pesar de realizar esta adaptacion de los datos no fue posible llegar a un modelo que proyectara el numero de viajes de una manera coherente. Esto es posible observarlo en las siguientes graficas.
+
+![ARIMA_SARIMA](/imagenes/ARIMA-SARIMA.png)
+
+Debido a estos resultados se continuo con la implementacion de los modelos de **Prophet** y **Redes Neuronales**. Sin embargo, se obtuvo buenos resultados con la implementacion de Prophet por lo que no se termino el modelado en Redes.
+
 ## Resultado final
 
-Este proyecto utiliza un modelo de series de tiempo desarrollado con Prophet para predecir la demanda de viajes en taxi en la ciudad de Nueva York. El enfoque principal fue lograr predicciones precisas y confiables que permitan la toma de decisiones estratégicas en el mercado de taxis.
-
-### Resultados Alcanzados
-
-El modelo se ajusto de manera iterativa hasta lograr una estabilizacion de las matricas respecto a la variacion de los hiperparametros, se lograron métricas clave apropiadas que validan la calidad de las predicciones:<br>
+### Resultado de metricas
+El modelo se ajusto de manera iterativa hasta lograr una estabilizacion de las metricas respecto a la variacion de los hiperparametros, se lograron valores apropiados para las métricas clave seleccionadas que validan la calidad de las predicciones:<br>
 
 <p align="center">
-  <img src="/imagenes/metricas.jpg" alt="Metricas" width="500">
+  <img src="/imagenes/metricas.jpg" alt="Metricas" width="250">
 </p>
 
 Para alcanzar estos resultados, los hiperparámetros del modelo quedaron de la siguiente manera: <br>
 
 <p align="center">
-  <img src="/imagenes/hiperparametros.jpg" alt="Hiperparametros" width="500">
+  <img src="/imagenes/hiperparametros.jpg" alt="Hiperparametros" width="250">
 </p>
 
+### Visualizaciones
 
-El modelo no es entrenado a partir de una division de los datos historicos como se hace con otros modelos, lo que implica un enfoque iterativo en el ajuste de parámetros hasta obtener métricas satisfactorias.
-
-### Visualizaciones Clave
-
-Para complementar los resultados arrojados por las metricas de evaluacion se crearon las siguentes graficas:
+Para complementar los resultados arrojados por las metricas de evaluacion a continuacion se presentan las graficas que se crearon y sirvieron como primera aproximacion para revisar la fiabilidad del modelo.
 
 1. **Predicción Mensual del Número de Viajes**
    ![predicciones](/imagenes/prediccion%20mensual%20d%20enumero%20de%20viajes%20en%20taxis.png)
@@ -165,10 +172,9 @@ Para complementar los resultados arrojados por las metricas de evaluacion se cre
 4. **Datos reales y pronostico**
     ![Pronostico](/imagenes/historico%20y%20pronostico.png)
 
+## Conclusion de resultados
 
-### Conclusion de resultados
-
-El modelo generado con Prophet permitió realizar proyecciones robustas y detalladas, demostrando su capacidad para captar patrones estacionales y tendencias clave en el mercado de taxis. Este enfoque proporciona una base sólida para futuras decisiones basadas en datos, como optimización de flotas o análisis financiero.
+El modelo generado con Prophet permitió realizar proyecciones robustas y detallada presentando un **MAPE** inferior al 10% y una **Cobertura** superior al 90% demostrando su capacidad para captar patrones estacionales y tendencias clave en el mercado de taxis. Con estos resultados se considera que las predicciones cubres en gran medida las variaciones de demanda y la flota estimada a partir de estas puede estar en capacidad de cubrirla. Este enfoque proporciona una base sólida para futuras decisiones basadas en datos y análisis financiero.
 
 ## Despliegue (Aplicacion Web)
 
