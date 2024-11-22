@@ -21,7 +21,7 @@ En esta carpeta se encuentra la informacion, datos y analisis correpondientes al
    - [Tendencia](#tendencia)
    - [Anomalias](#anomalias)
    - [Estacionariedad](#estacionariedad)
-6. [Eleccion del modelo](#eleccion-del-modelo)
+6. [Seleccion del modelo](#seleccion-del-modelo)
 7. [Resultado final](#resultado-final)
 8. [Despliegue (Aplicacion Web)](#despliegue-aplicacion-web)
 
@@ -40,13 +40,11 @@ Para estos calculos se emplearia la siguiente informacion adicional como promedi
   - Costo de combustible (kWh o gal)
   - Emisiones de CO2 por kilometro<br>
 
-## Modelo
+## Modelo 
 ![modelo_ML](/imagenes/modelo_ML.jpg)
 
 ## Metodologia
 Se desarrollará a partir del dataset de *taxis* un **modelo de Machine Learning de aprendizaje no supervisado** a traves de un análisis de *Series de Tiempo* debido a que los datos estan intrinsecamente ordenados cronologicamente. Se utilizara esta tecnica ya que es crucial identificar patrones y tendencias, para anticipar el comportamiento futuro. Para comenzar, se realizara un analisis preliminar del comportamiento del numero de viajes para diferentes frecuencias de muestreo que se obtendran haciendo uso de la funcion *resample*. <br> Se evaluaran diferentes modelos de prediccion:<br>
-- Procesos AR (AutoRegressive) 
-- Procesos AM (Moving Average)
 - ARIMA (AutoRegressive Integrated Moving Average)
 - SARIMA (Seasonal AutoRegressive Integrated Moving Average)
 - Prophet
@@ -54,7 +52,7 @@ Se desarrollará a partir del dataset de *taxis* un **modelo de Machine Learning
 Para comparar los modelos se emplearan las siguientes metricas:
 - **Coverage (Cobertura de los Intervalos de Incertidumbre ):** Es clave porque ayuda a evaluar cuán confiable es la predicción y si el sistema estará preparado para escenarios extremos (alta demanda o baja demanda). <br>
 - **MAE (Mean Absolute Error):** Es util para tener una medida clara del error promedio en el número de viajes que estás prediciendo. Es decir, cual es la cantidad de viajes se esta desviando de la prediccion y si la operacion estaria en la capacidad de cubrirlos.
-- **RMSE (Root Mean Squared Error):** Permite tener en cuenta los picos de demanda o eventos especiales (como días festivos o eventos deportivos) que generan una alta variabilidad en el número de viajes.
+- **MAPE (Mean Absolute Percentage Error):** Debido a que se trabaja con valores del orden de los millones, es importante esta metrica para poder dimensionar la magnitud del resultado del MAE.
 
 Los valores y calculos obtenidos a partir de este modelo seran desplegados en un portal web elaborado usando la libreria *Streamlit*.
 
@@ -121,11 +119,68 @@ De acuerdo con esto, fue necesario realizar un proceso de diferenciacion de la s
 
 ![men_diff](/imagenes/men_diff.jpg)
 
-## Eleccion del modelo
+## Seleccion del modelo
+
+Para realizar la eleccion del modelo 
+
+### Eleccion de la frecuencia temporal
 
 ## Resultado final
 
+Este proyecto utiliza un modelo de series de tiempo desarrollado con Prophet para predecir la demanda de viajes en taxi en la ciudad de Nueva York. El enfoque principal fue lograr predicciones precisas y confiables que permitan la toma de decisiones estratégicas en el mercado de taxis.
+
+### Resultados Alcanzados
+
+El modelo se ajusto de manera iterativa hasta lograr una estabilizacion de las matricas respecto a la variacion de los hiperparametros, se lograron métricas clave apropiadas que validan la calidad de las predicciones:<br>
+
+<p align="center">
+  <img src="/imagenes/metricas.jpg" alt="Metricas" width="500">
+</p>
+
+Para alcanzar estos resultados, los hiperparámetros del modelo quedaron de la siguiente manera: <br>
+
+<p align="center">
+  <img src="/imagenes/hiperparametros.jpg" alt="Hiperparametros" width="500">
+</p>
+
+
+El modelo no es entrenado a partir de una division de los datos historicos como se hace con otros modelos, lo que implica un enfoque iterativo en el ajuste de parámetros hasta obtener métricas satisfactorias.
+
+### Visualizaciones Clave
+
+Para complementar los resultados arrojados por las metricas de evaluacion se crearon las siguentes graficas:
+
+1. **Predicción Mensual del Número de Viajes**
+   ![predicciones](/imagenes/prediccion%20mensual%20d%20enumero%20de%20viajes%20en%20taxis.png)
+
+
+2. **Componentes del Modelo**
+   ![componentes](/imagenes/componentes%20de%20las%20series%20de%20tiempo.png)
+
+
+3. **Comportamiento de metricas** <br>
+    ![metricas](/imagenes/validacion%20cruzada.png)
+
+
+4. **Datos reales y pronostico**
+    ![Pronostico](/imagenes/historico%20y%20pronostico.png)
+
+
+### Conclusion de resultados
+
+El modelo generado con Prophet permitió realizar proyecciones robustas y detalladas, demostrando su capacidad para captar patrones estacionales y tendencias clave en el mercado de taxis. Este enfoque proporciona una base sólida para futuras decisiones basadas en datos, como optimización de flotas o análisis financiero.
+
 ## Despliegue (Aplicacion Web)
+
+Para desplegar los resultados del modelo obtenido se realizó una aplicación implementando Streamlit y programada en Python, garantizando una interfaz interactiva y accesible para los usuarios, permitiendo obtener resultados y métricas clave tanto en términos financieros como ambientales. <br>
+Gracias a estas herramientas, es posible explorar y analizar en profundidad el mercado de taxis en la ciudad de Nueva York, proporcionando un análisis detallado de los datos disponibles. Podras encontrar las siguientes estimaciones:
+
+- Precios de mercado de vehiculos
+- Inversion inicial en flota de vehiculos
+- Costo de combustible diaria y del periodo de analisis
+- Costo anual de mantenimiento
+- Emisiones de CO2
+- Ingreso diario y del periodo de analisis
 
 Puedes encontrar esta herramienta [aqui](https://nyc-taxis-predict.streamlit.app/)
 

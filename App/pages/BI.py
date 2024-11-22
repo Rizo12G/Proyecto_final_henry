@@ -82,6 +82,10 @@ else:
     veh_cov = vehiculos_necesarios*(1-per)
     veh_ele = vehiculos_necesarios*per
 
+    dist_diaria = total_dist / dias_pred
+    co2 = total_dist*(411/1000000)*(1-per)
+    co2_dia = dist_diaria*(411/1000000)*(1-per)
+    
     emis = pred.copy()
     emis['Emisiones CO2 (ton)'] = pred['Emisiones CO2 (ton)']*(1-per_d) + pred['Emisiones CO2 (ton)']*(per_d)*(1-per)
 
@@ -105,20 +109,30 @@ else:
         y=impacto['Emisiones CO2 (ton)'],
         mode='lines', 
         name=f'Impacto de NYC Liberty Transportation',
-        line=dict(color='green', dash='dash')  # Línea roja punteada
+        line=dict(color='lawngreen', dash='dot')  # Línea roja punteada
     ))
 
     # Configuración del gráfico
     fig2.update_layout(
         title='Estimacion de emisiones de CO2',
+        title_x = 0.25,
         xaxis_title='Fecha',
         yaxis_title='Emisiones de CO2 (ton)',
-        title_font=dict(size=20),
+        title_font=dict(size=22, family='Arial'),
         xaxis_rangeslider_visible=True
     )
 
+    col1, col2 = st.columns([1, 2.5], vertical_alignment='center')
+
     # Mostrar la gráfica en Streamlit
-    st.plotly_chart(fig2) 
+    
+    with col2:
+        st.plotly_chart(fig2) 
+
+    with col1:
+        st.markdown('#### Impacto ambiental 🌎')
+        st.metric("Emisiones de CO2 en un dia (ton)", f"{co2_dia:,.2f}")
+        st.metric(f"Total emisiones de CO2 en {n_months} meses (ton)", f"{co2:,.2f}")
 
     st.markdown("***")
 
@@ -197,12 +211,8 @@ else:
 
         st.markdown('***')
 
-        dist_diaria = total_dist / dias_pred
-
         col1, col2 = st.columns(2, gap='large', vertical_alignment='top')
 
-        co2 = total_dist*(411/1000000)*(1-per)
-        co2_dia = dist_diaria*(411/1000000)*(1-per)
         cost_gas = (dist_diaria/40)*3.42*(1-per) if veh_cov > 0 else 0
         cons_kw = ((dist_diaria*per*1.60934)*eff)/1000 if veh_ele > 0 else 0
         cost_kw = cons_kw*0.2
@@ -254,12 +264,6 @@ else:
         col3, col4 = st.columns(2, gap='large', vertical_alignment='top')
 
         with col3:
-            st.subheader('Impacto ambiental 🌎')
-            st.metric("Emisiones de CO2 en un dia (ton)", f"{co2_dia:,.2f}")
-            st.metric(f"Total emisiones de CO2 en {n_months} meses (ton)", f"{co2:,.2f}")
-
-
-        with col4:
             st.subheader("Ganancia 💰")
             ingresos_diarios = (total_usd / dias_pred) * per_d
             costos_diarios = cost_gas + cost_kw
@@ -267,6 +271,10 @@ else:
             utilidad_total = utilidad_diaria * dias_pred
             st.metric(f"Ganancia estimada en un dia (USD)", f"${utilidad_diaria if utilidad_diaria > 0 else 0:,.2f}")
             st.metric(f"Ganancia total estimada en {n_months} meses (USD)", f"${utilidad_total if utilidad_total > 0 else 0:,.2f}")
+
+
+        with col4:
+            st.empty()
 
         
     else:
