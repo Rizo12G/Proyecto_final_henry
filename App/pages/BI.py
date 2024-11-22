@@ -18,13 +18,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.components.v1.iframe(
-    src="https://app.powerbi.com/links/q-l_zwVmYi?ctid=577fc1d8-0922-458e-87bf-ec4f455eb600&pbi_source=linkShare",  # Reemplaza con tu URL de inserción
-    width=800,  # Ancho del iframe
-    height=500,  # Alto del iframe
-    scrolling=True  # Habilitar el scrolling si el contenido es grande
-)
-
 pred_past = pd.read_csv('App/pred.csv')
 n_months = pred_past.shape[0]
 
