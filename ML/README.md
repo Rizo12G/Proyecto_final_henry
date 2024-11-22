@@ -7,14 +7,14 @@
 
 En esta carpeta se encuentra la informacion, datos y analisis correpondientes al modelo de Machine Learning:
 
-- [**Carpeta raw:**](/raw) Archivos csv para cada frecuencia escogida (diario, semanal y mensual) generado usando la funcion *resample*
-- [**Analisis_preliminar_ML:**](Analisis_preliminar_ML.ipynb) Notebook con el analisis preliminar de las series de tiempo
-- [**Eleccion_modelos_ML:**](Eleccion_modelos_ML.ipynb) Notebook con las primeras aproximaciones al modelo de prediccion
-- [**Modelo_Prophet:**](Modelo_Prophet.ipynb) Notebook con el modelo de prediccion definitivo
+- [**Carpeta raw:**](/raw) Archivos csv para cada frecuencia escogida (diario, semanal y mensual) generado usando la funcion *resample*. Incluye los 2.5 alos que se adicionaron al modelo.
+- [**Analisis_preliminar_ML_extendido:**](Analisis_preliminar_ML_extendido.ipynb) Notebook con el analisis preliminar de las series de tiempo que incluye el periodo adicional.
+- [**Modelos_ARIMA_SARIMA:**](Modelos_ARIMA_SARIMA.ipynb) Notebook con las primeras aproximaciones al modelo de prediccion (ARIMA y SARIMA).
+- [**Modelo_Prophet:**](Modelo_Prophet.ipynb) Notebook con el modelo de prediccion definitivo implementado en Prophet.
 
 ## Tabla de Contenido
 1. [Objetivo](#objetivo)
-2. [Modelo](#modelo)
+2. [Planificacion del Modelo](#modelo)
 3. [Metodologia](#metodologia)
 4. [Tecnologias](#tecnologias)
 5. [Analisis Preliminar](#análisis-preliminar)
@@ -174,7 +174,9 @@ Para complementar los resultados arrojados por las metricas de evaluacion a cont
 
 ## Conclusion de resultados
 
-El modelo generado con Prophet permitió realizar proyecciones robustas y detallada presentando un **MAPE** inferior al 10% y una **Cobertura** superior al 90% demostrando su capacidad para captar patrones estacionales y tendencias clave en el mercado de taxis. Con estos resultados se considera que las predicciones cubres en gran medida las variaciones de demanda y la flota estimada a partir de estas puede estar en capacidad de cubrirla. Este enfoque proporciona una base sólida para futuras decisiones basadas en datos y análisis financiero.
+El modelo generado con Prophet permitió realizar proyecciones robustas y detallada presentando un **MAPE** inferior al 10% y una **Cobertura** superior al 90% demostrando su capacidad para captar patrones estacionales y tendencias clave en el mercado de taxis. Con estos resultados se considera que las predicciones cubres en gran medida las variaciones de demanda y la flota estimada a partir de estas puede estar en capacidad de cubrirla. Este enfoque proporciona una base sólida para futuras decisiones basadas en datos y análisis financiero. El metodologia empleada en el modelo definitivo fue la siguiente.
+
+![Modelo Definitivo](/imagenes/ModeloDefinitivo.png)
 
 ## Despliegue (Aplicacion Web)
 
