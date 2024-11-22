@@ -133,7 +133,7 @@ else:
         st.markdown('#### Impacto ambiental 🌎')
         st.metric("Emisiones de CO2 en un dia (ton)", f"{co2_dia:,.2f}")
         st.metric(f"Total emisiones de CO2 en {n_months} meses (ton)", f"{co2:,.2f}")
-        st.metric("Reduccion de emisiones:, f"{reduccion*100:,.2f}%")
+        st.metric("Reduccion de emisiones:", f"{(reduccion*100):,.2f}%")
 
     st.markdown("***")
 
